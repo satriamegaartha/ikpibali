@@ -117,9 +117,9 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?= site_url('anggota/comingsoon') ?>" class="nav-link">
+                  <a href="<?= site_url('forum/indexfgdadmin') ?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Forum Diskusi</p>
+                    <p>FGD</p>
                   </a>
                 </li>
               </ul>

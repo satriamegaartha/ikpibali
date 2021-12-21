@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2021 at 11:25 AM
+-- Generation Time: Dec 21, 2021 at 09:22 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.4.27
 
@@ -48,7 +48,7 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`nra`, `nama`, `brevet`, `sk`, `kip`, `alamat`, `email`, `password`, `notelp`, `profile`, `created_at`, `updated_at`) VALUES
-(1, 'administrator', 'A', 'administrator', 'administrator', 'administrator', 'admin@administrator.com', 'admin', '0', 'administrator.png', '2021-11-01 01:34:38', NULL),
+(1, 'administrator', 'A', 'administrator', 'administrator', 'administrator', 'admin@administrator.com', 'admin', '0', 'profile.jpg', '2021-11-01 01:34:38', NULL),
 (123, 'blanca', 'A', '123', '123', 'denpasar', 'blankamade@gmail.com', '123', '082247949140', 'administrator.png', '2021-11-03 01:34:43', NULL);
 
 -- --------------------------------------------------------
@@ -64,6 +64,7 @@ CREATE TABLE `forum_fgd` (
   `konten` text NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_peraturan` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -72,10 +73,10 @@ CREATE TABLE `forum_fgd` (
 -- Dumping data for table `forum_fgd`
 --
 
-INSERT INTO `forum_fgd` (`id_forumfgd`, `judul`, `slug`, `konten`, `id_user`, `id_peraturan`, `created_at`, `updated_at`) VALUES
-(14, 'contoh peraturan baru', 'contoh-peraturan-baru', 'konten satu', 1, 0, '2021-12-20 04:38:37', '2021-12-20 04:38:37'),
-(15, 'peraturan baru', 'peraturan-baru', 'konten 2', 1, 8, '2021-12-20 04:38:45', '2021-12-20 04:38:45'),
-(16, 'a', 'a', 'konten 3\r\n', 1, 7, '2021-12-20 04:38:51', '2021-12-20 04:38:51');
+INSERT INTO `forum_fgd` (`id_forumfgd`, `judul`, `slug`, `konten`, `id_user`, `id_peraturan`, `status`, `created_at`, `updated_at`) VALUES
+(14, 'contoh peraturan baru', 'contoh-peraturan-baru', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium incidunt suscipit veritatis magnam cupiditate adipisci, ab necessitatibus ducimus tempore deleniti repudiandae dolore aut commodi hic distinctio. Obcaecati soluta quidem corrupti.\r\nLorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium incidunt suscipit veritatis magnam cupiditate adipisci, ab necessitatibus ducimus tempore deleniti repudiandae dolore aut commodi hic distinctio. Obcaecati soluta quidem corrupti.\r\nLorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium incidunt suscipit veritatis magnam cupiditate adipisci, ab necessitatibus ducimus tempore deleniti repudiandae dolore aut commodi hic distinctio. Obcaecati soluta qu\r\nidem corrupti.', 1, 0, 'Active', '2021-12-20 04:38:37', '2021-12-20 19:51:23'),
+(15, 'peraturan baru', 'peraturan-baru', 'konten 2', 1, 8, 'Active', '2021-12-20 04:38:45', '2021-12-21 00:24:44'),
+(17, 'a', 'a', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tenetur quam aut, voluptates repudiandae quae id dignissimos, cum numquam quibusdam minus. Quaerat hic repudiandae quam laudantium sed nam a aliquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tenetur quam aut, voluptates repudiandae quae id dignissimos, cum numquam quibusdam minus. Quaerat hic repudiandae quam laudantium sed nam a aliquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tenetur quam aut, voluptates repudiandae quae id dignissimos, cum numquam quibusdam minus. Quaerat hic repudiandae quam laudantium sed nam a aliquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tenetur quam aut, voluptates repudiandae quae id dignissimos, cum numquam quibusdam minus. Quaerat hic repudiandae quam laudantium sed nam a aliquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tenetur quam aut, voluptates repudiandae quae id dignissimos, cum numquam quibusdam minus. Quaerat hic repudiandae quam laudantium sed nam a aliquam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tenetur quam aut, voluptates repudiandae quae id dignissimos, cum numquam quibusdam minus. Quaerat hic repudiandae quam laudantium sed nam a aliquam.', 1, 7, 'Active', '2021-12-21 03:04:38', '2021-12-21 00:24:49');
 
 -- --------------------------------------------------------
 
@@ -87,11 +88,26 @@ CREATE TABLE `komentar_fgd` (
   `id_komentarfgd` int(11) NOT NULL,
   `konten` text NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_forum` int(11) NOT NULL,
+  `id_forumfgd` int(11) NOT NULL,
   `parent` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `komentar_fgd`
+--
+
+INSERT INTO `komentar_fgd` (`id_komentarfgd`, `konten`, `id_user`, `id_forumfgd`, `parent`, `created_at`, `updated_at`) VALUES
+(2, 'komentar 2', 1, 14, 0, '2021-12-21 04:02:47', '2021-12-21 05:02:47'),
+(4, 'komentar 4\r\n', 123, 14, 0, '2021-12-21 04:04:42', '2021-12-21 05:04:42'),
+(5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur rutrum condimentum. Donec blandit, purus eu tristique sodales, quam sapien malesuada nisl, in luctus orci tortor at metus. Cras mollis aliquet nisi pulvinar congue. Sed in ligula in leo aliquet placerat. Ut tempor tristique neque, id pretium quam. Ut dignissim sit amet justo vitae porta. Maecenas et semper mi. Pellentesque et pulvinar ante. Pellentesque commodo augue ut velit sagittis, eget volutpat dolor fringilla. Donec lobortis egestas dictum. Curabitur eget fringilla purus. Curabitur elementum sollicitudin nisi, quis feugiat elit sollicitudin eget. Mauris in rutrum nisl, at dignissim sem.\r\n\r\n\r\n\r\nEtiam vel felis sit amet ante auctor dictum id ut dolor. Mauris efficitur leo elit. Donec et gravida tortor. Quisque blandit odio vitae pretium maximus. Vestibulum gravida nisi nec commodo ultricies. Maecenas ipsum ligula, ultricies quis egestas ac, consequat et augue. Morbi ac purus sagittis, pretium erat ac, consequat nisl. Aenean eleifend molestie augue eu rutrum. Duis varius lectus a pulvinar venenatis. Cras vulputate sodales porta. Pellentesque non lacus erat. Nam at condimentum nunc. Suspendisse potenti. Cras viverra molestie justo, non dapibus ante imperdiet sit amet. Vivamus non pharetra lectus, et viverra dolor.', 123, 14, 0, '2021-12-21 04:05:00', '2021-12-21 05:05:00'),
+(6, 'komentar 6', 123, 15, 0, '2021-12-21 04:05:25', '2021-12-21 05:05:25'),
+(8, 'balasan kedua', 1, 14, 5, '2021-12-21 04:46:47', '2021-12-21 05:46:47'),
+(9, 'balasan ketiga', 123, 14, 4, '2021-12-21 04:51:27', '2021-12-21 05:51:27'),
+(11, 'balasan satria', 123, 14, 5, '2021-12-21 07:29:30', '2021-12-21 08:29:30'),
+(16, 'balasan ketujuh', 1, 14, 5, '2021-12-21 08:10:27', '2021-12-21 09:10:27'),
+(17, 'balasan kedelapan', 1, 14, 5, '2021-12-21 08:10:31', '2021-12-21 09:10:31');
 
 -- --------------------------------------------------------
 
@@ -322,13 +338,13 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT for table `forum_fgd`
 --
 ALTER TABLE `forum_fgd`
-  MODIFY `id_forumfgd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_forumfgd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `komentar_fgd`
 --
 ALTER TABLE `komentar_fgd`
-  MODIFY `id_komentarfgd` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_komentarfgd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `peraturan`

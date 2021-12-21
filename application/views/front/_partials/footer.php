@@ -125,6 +125,14 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
+
+<script>
+  $(document).ready(function() {
+    $('#btn-komentar-utama').click(function() {
+      $('#komentar-utama').toggle('slide');
+    });
+  });
+</script>
 </body>
 
 </html>

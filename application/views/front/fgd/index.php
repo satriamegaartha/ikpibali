@@ -2,11 +2,6 @@
 
 <body>
     <?php $this->load->view('front/_partials/navbar') ?>
-
-
-
-
-
     <section id="pricing" class="pricing">
         <div class="container aos-init aos-animate" data-aos="fade-up">
 
