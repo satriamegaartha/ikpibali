@@ -14,6 +14,7 @@ class Ppl_model extends CI_Model
     public $harga_pendaftaran;
     public $gambar;
     public $keterangan;
+    public $point;
 
     public function terbaruArray()
     {
@@ -53,6 +54,7 @@ class Ppl_model extends CI_Model
         $this->harga_pendaftaran = $post["harga_pendaftaran"];
         $this->gambar = $this->do_upload();
         $this->keterangan = $post["keterangan"];
+        $this->point = $post["point"];
 
         return $this->db->insert($this->_table, $this);
     }
@@ -70,6 +72,7 @@ class Ppl_model extends CI_Model
         $this->jumlah_peserta_user = 0;
         $this->harga_pendaftaran = $post["harga_pendaftaran"];
         $this->keterangan = $post["keterangan"];
+        $this->point = $post["point"];
 
         if (!empty($_FILES["gambar"]["name"])) {
             $this->gambar = $this->do_upload();

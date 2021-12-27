@@ -36,6 +36,13 @@
                   <h4><?= $p['nama']; ?></h4>
                   <span><?= date('d F Y', strtotime($p['tanggal_ppl'])); ?></span>
                   <span>Rp. <?= number_format($p['harga_pendaftaran'], 0, ',', '.'); ?></span>
+
+                  <?php if ($this->session->userdata('user_logged')) { ?>
+                    <span><a href="<?php echo site_url('front/daftarppl/' . $p["id_ppl"]) ?>" class="btn btn-success btn-sm mt-2"></i> Daftar</a></span>
+                  <?php } else { ?>
+                    <span><a href="<?php echo site_url('anggota/login') ?>" class="btn btn-success btn-sm mt-2" onclick="return confirm('Anda Belum Login!');"></i> Daftar</a></span>
+                  <?php } ?>
+
                 </div>
               </div>
             </a>

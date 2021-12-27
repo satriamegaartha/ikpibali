@@ -13,7 +13,7 @@
 
         <li class="dropdown"><a href="#"><span>PPL</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><a href="<?= site_url('front/ppllist/') ?>">Semua</a></li>
+            <li><a href="<?= site_url('front/ppllist/') ?>">List</a></li>
             <li><a href="<?= site_url('front/pplstatus/') ?>">Status Pendaftaran</a></li>
           </ul>
         </li>
@@ -30,9 +30,11 @@
           </ul>
         </li>
 
+
         <?php if ($this->session->userdata('role')) { ?>
           <?php if ($this->session->userdata('role') == 'Anggota') { ?>
             <li><a class="nav-link scrollto" href="<?= site_url('forum/indexfgd') ?>">FGD</a></li>
+            <li><a class="nav-link scrollto" href="<?= site_url('front/indexpoint') ?>">Point</a></li>
             <li><a class="nav-link scrollto" href="<?= site_url('anggota/postingan') ?>">Admin Page</a></li>
           <?php } else { ?>
             <li><a class="nav-link scrollto" href="<?= site_url('anggota/logout') ?>">Logout</a></li>

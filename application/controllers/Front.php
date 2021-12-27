@@ -13,6 +13,7 @@ class Front extends CI_Controller
 		$this->load->model("Anggota_Model", "anggota");
 		$this->load->model("Ppl_Model", "ppl");
 		$this->load->model("Ppluser_Model", "ppluser");
+		$this->load->model("Point_terstruktur_Model", "point_terstruktur");
 	}
 	public function index()
 	{
@@ -145,5 +146,48 @@ class Front extends CI_Controller
 		$data['tahun'] = $this->postingan->getTahun();
 		$data['anggota'] = $this->anggota->getByIdresult($nra);
 		$this->load->view('front/anggota/profile', $data);
+	}
+
+
+	public function indexpoint()
+	{
+		if ($this->input->post()) {
+			is_logged_in();
+			$tahun_select = $this->input->post('tahun_select');
+			$id_peserta = $this->session->userdata('id_login');
+			$data['tahun'] = $this->postingan->getTahun();
+			$data['point_terstruktur'] = $this->point_terstruktur->getByPesertaByTahun($id_peserta, $tahun_select);
+			$data['tahun_point']  = $this->point_terstruktur->getTahun();
+			$data['tahun_select'] = $tahun_select;
+
+
+			$this->load->view('front/point/index', $data);
+		} else {
+			is_logged_in();
+			$id_peserta = $this->session->userdata('id_login');
+			$data['tahun'] = $this->postingan->getTahun();
+			$data['point_terstruktur'] = $this->point_terstruktur->getByPeserta($id_peserta);
+			$data['tahun_point']  = $this->point_terstruktur->getTahun();
+			$data['tahun_select'] = "";
+			$this->load->view('front/point/index', $data);
+		}
+	}
+
+	public function uploadbuktihadir($id_ppluser = null)
+	{
+		if ($this->input->post()) {
+			if ($this->ppluser->updatebuktihadir($id_ppluser)) {
+				echo "<script>
+                alert('Bukti Hadir Berhasil Diupload!');
+                window.location.href='pplstatus';
+                </script>";
+			} else {
+				echo "<script>
+                alert('Bukti Hadir Gagal Diupload);
+                window.location.href='editanggota';
+                </script>";
+				redirect('front/ppluserdetail/' . $id_ppluser);
+			}
+		}
 	}
 }

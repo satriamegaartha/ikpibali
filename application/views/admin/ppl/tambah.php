@@ -67,6 +67,10 @@
                   <label for="exampleInputPassword1">Keterangan</label>
                   <textarea class="form-control" name="keterangan" id="keterangan" rows="15" placeholder="Keterangan"></textarea>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Point</label>
+                  <input type="number" name="point" class="form-control" id="point" placeholder="Point">
+                </div>
               </div>
               <!-- /.card-body -->
 

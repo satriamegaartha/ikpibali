@@ -73,15 +73,25 @@
                                     <h5>Rp. <?= number_format($ppl['harga_pendaftaran'], 0, ',', '.'); ?></h5>
                                 </li>
                                 <li><strong>Tanggal Event: </strong> <?= date('d F Y', strtotime($ppl['tanggal_ppl'])); ?></li>
-                                <li class="mb-5"><strong>Status Pembayaran: </strong><?= $ppluser['status_pembayaran']; ?></li>
+                                <li><strong>Status Pembayaran: </strong><?= $ppluser['status_pembayaran']; ?></li>
 
-                                <?php if ($ppluser['status_pembayaran'] == 'Belum Upload') { ?>
-                                    <li>
-                                        <form action="<?php echo site_url('front/uploadbuktitransfer') ?>" method="post" enctype="multipart/form-data">
+                                <?php if ($ppluser['status_pembayaran'] == 'Upload Bukti Pembayaran') { ?>
+                                    <li class="mt-5">
+                                        <form action=" <?php echo site_url('front/uploadbuktitransfer') ?>" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="id_ppluser" value="<?= $ppluser['id']; ?>">
                                             <input type="file" name="bukti_transfer">
                                             <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                                         </form>
+                                    </li>
+                                <?php } else { ?>
+                                    <li><strong>Upload Bukti Kehadiran (apabila tidak diabsen)</strong></li>
+                                    <li>
+                                        <form action=" <?php echo site_url('front/uploadbuktihadir') ?>" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="id_ppluser" value="<?= $ppluser['id']; ?>">
+                                            <input type="file" name="bukti_hadir">
+                                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                                        </form>
+
                                     </li>
                                 <?php } ?>
 

@@ -385,4 +385,43 @@ class Anggota extends CI_Controller
 			}
 		}
 	}
+
+	public function daftarhadirppl($id_ppl)
+	{
+		$data['pesertapplanggota'] = $this->ppluser->getPesertaAnggota($id_ppl);
+		$data['pesertapplmember'] = $this->ppluser->getPesertaMember($id_ppl);
+		$data['ppl'] = $this->ppl->getByIdArray($id_ppl);
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->filename = "daftar-hadir-ppl " . $data['ppl']['nama'] . ".pdf";
+		$this->pdf->load_view('admin/ppl/daftarhadirppl', $data);
+	}
+
+	public function absensippl($id_ppl)
+	{
+		is_logged_in();
+		$data['pesertappl'] = $this->ppluser->getPeserta($id_ppl);
+		$data['ppl'] = $this->ppl->getByIdArray($id_ppl);
+
+		$this->load->view('admin/ppl/absensi', $data);
+	}
+
+	public function checkabsensippl($id_ppl)
+	{
+		is_logged_in();
+		$data['ppl'] = $this->ppl->getByIdArray($id_ppl);
+
+
+		if ($this->ppluser->checkabsensi($id_ppl)) {
+			echo "<script>
+				alert('Absensi Peserta PPL Telah Diperbaharui!');																
+				 </script>";
+			redirect('anggota/listpesertappl/' . $data['ppl']["id_ppl"]);
+		} else {
+			echo "<script>
+				alert('Absensi Gagal Memperbaharui Peserta PPL! Silahkan Hubungi Admin);
+				window.location.href='editppl';
+				</script>";
+		}
+	}
 }

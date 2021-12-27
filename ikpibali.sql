@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2021 at 09:22 AM
+-- Generation Time: Dec 27, 2021 at 09:54 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.4.27
 
@@ -163,6 +163,31 @@ INSERT INTO `peraturan` (`id_peraturan`, `nama`, `keterangan`, `file`, `status`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `point_terstruktur`
+--
+
+CREATE TABLE `point_terstruktur` (
+  `id` int(11) NOT NULL,
+  `id_peserta` varchar(255) NOT NULL,
+  `id_event` varchar(255) NOT NULL,
+  `point` int(11) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `point_terstruktur`
+--
+
+INSERT INTO `point_terstruktur` (`id`, `id_peserta`, `id_event`, `point`, `role`, `tanggal`) VALUES
+(11, 'U0001', '15', 3, 'Member', '2021-12-29'),
+(12, 'U0002', '15', 3, 'Member', '2021-12-29'),
+(13, '1', '16', 2, 'Anggota', '2021-12-31'),
+(14, '1', '15', 3, 'Anggota', '2022-01-07');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `postingan`
 --
 
@@ -230,6 +255,7 @@ CREATE TABLE `ppl` (
   `harga_pendaftaran` int(11) NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `keterangan` text NOT NULL,
+  `point` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -238,10 +264,10 @@ CREATE TABLE `ppl` (
 -- Dumping data for table `ppl`
 --
 
-INSERT INTO `ppl` (`id_ppl`, `nama`, `tanggal_ppl`, `tanggal_pendaftaran_buka`, `tanggal_pendaftaran_tutup`, `jumlah_peserta_anggota`, `jumlah_peserta_user`, `harga_pendaftaran`, `gambar`, `keterangan`, `created_at`, `updated_at`) VALUES
-(15, 'Test PPL 1', '2021-12-25', '2021-12-18', '2021-12-24', 0, 0, 500000, '12-12-2021_03-19-20.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra in mauris ut ornare. Nam tempus mi ac eros ultrices rutrum. Vivamus congue, odio ac fermentum pulvinar, dolor ante dictum quam, vitae volutpat libero augue nec sem. Curabitur imperdiet pretium velit, vitae porttitor erat convallis nec. Pellentesque est quam, eleifend a efficitur sit amet, accumsan vulputate erat. Fusce et accumsan erat. Etiam tellus ipsum, luctus sit amet leo eu, porta rhoncus lectus. Donec volutpat, mi ac malesuada ultrices, felis nibh fermentum lectus, sed semper mi felis vel eros. Mauris dignissim ipsum id enim mollis mollis. Fusce interdum, tellus eget malesuada porta, eros magna aliquam nisi, sed accumsan massa purus eu quam. Sed rutrum condimentum nibh in lobortis. Nulla tristique tincidunt eros, id consectetur enim mattis at. Maecenas in tempus massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\r\n\r\nUt purus leo, sagittis sodales sem nec, hendrerit ornare dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Proin tellus augue, venenatis convallis fringilla at, imperdiet ac augue. Proin non porta arcu, a ultrices nulla. Pellentesque rhoncus mattis erat nec gravida. Sed tristique consectetur turpis eget tristique. Fusce leo velit, blandit ac sem venenatis, semper vulputate magna. Sed suscipit dui nibh, in commodo elit feugiat non. Maecenas vel quam et enim facilisis placerat in id nulla. Pellentesque tincidunt dignissim tincidunt. Nam fringilla nunc massa, vitae rhoncus quam sollicitudin in. Proin lacus odio, ultricies at sapien nec, venenatis condimentum dolor. Aenean eget sodales odio, eget vehicula massa.', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, 'Test PPL 2', '2021-12-31', '2021-12-25', '2021-12-30', 0, 0, 350000, '12-12-2021_03-20-44.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra in mauris ut ornare. Nam tempus mi ac eros ultrices rutrum. Vivamus congue, odio ac fermentum pulvinar, dolor ante dictum quam, vitae volutpat libero augue nec sem. Curabitur imperdiet pretium velit, vitae porttitor erat convallis nec. Pellentesque est quam, eleifend a efficitur sit amet, accumsan vulputate erat. Fusce et accumsan erat. Etiam tellus ipsum, luctus sit amet leo eu, porta rhoncus lectus. Donec volutpat, mi ac malesuada ultrices, felis nibh fermentum lectus, sed semper mi felis vel eros. Mauris dignissim ipsum id enim mollis mollis. Fusce interdum, tellus eget malesuada porta, eros magna aliquam nisi, sed accumsan massa purus eu quam. Sed rutrum condimentum nibh in lobortis. Nulla tristique tincidunt eros, id consectetur enim mattis at. Maecenas in tempus massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\r\n\r\nUt purus leo, sagittis sodales sem nec, hendrerit ornare dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Proin tellus augue, venenatis convallis fringilla at, imperdiet ac augue. Proin non porta arcu, a ultrices nulla. Pellentesque rhoncus mattis erat nec gravida. Sed tristique consectetur turpis eget tristique. Fusce leo velit, blandit ac sem venenatis, semper vulputate magna. Sed suscipit dui nibh, in commodo elit feugiat non. Maecenas vel quam et enim facilisis placerat in id nulla. Pellentesque tincidunt dignissim tincidunt. Nam fringilla nunc massa, vitae rhoncus quam sollicitudin in. Proin lacus odio, ultricies at sapien nec, venenatis condimentum dolor. Aenean eget sodales odio, eget vehicula massa.', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 'test ppl kadaluarsa', '2021-12-04', '2021-12-01', '2021-12-03', 0, 0, 500000, '12-12-2021_03-40-11.jpg', 'lorem', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `ppl` (`id_ppl`, `nama`, `tanggal_ppl`, `tanggal_pendaftaran_buka`, `tanggal_pendaftaran_tutup`, `jumlah_peserta_anggota`, `jumlah_peserta_user`, `harga_pendaftaran`, `gambar`, `keterangan`, `point`, `created_at`, `updated_at`) VALUES
+(15, 'Test PPL 1', '2021-12-29', '2021-12-18', '2021-12-28', 0, 0, 500000, '12-12-2021_03-19-20.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra in mauris ut ornare. Nam tempus mi ac eros ultrices rutrum. Vivamus congue, odio ac fermentum pulvinar, dolor ante dictum quam, vitae volutpat libero augue nec sem. Curabitur imperdiet pretium velit, vitae porttitor erat convallis nec. Pellentesque est quam, eleifend a efficitur sit amet, accumsan vulputate erat. Fusce et accumsan erat. Etiam tellus ipsum, luctus sit amet leo eu, porta rhoncus lectus. Donec volutpat, mi ac malesuada ultrices, felis nibh fermentum lectus, sed semper mi felis vel eros. Mauris dignissim ipsum id enim mollis mollis. Fusce interdum, tellus eget malesuada porta, eros magna aliquam nisi, sed accumsan massa purus eu quam. Sed rutrum condimentum nibh in lobortis. Nulla tristique tincidunt eros, id consectetur enim mattis at. Maecenas in tempus massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\r\n\r\nUt purus leo, sagittis sodales sem nec, hendrerit ornare dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Proin tellus augue, venenatis convallis fringilla at, imperdiet ac augue. Proin non porta arcu, a ultrices nulla. Pellentesque rhoncus mattis erat nec gravida. Sed tristique consectetur turpis eget tristique. Fusce leo velit, blandit ac sem venenatis, semper vulputate magna. Sed suscipit dui nibh, in commodo elit feugiat non. Maecenas vel quam et enim facilisis placerat in id nulla. Pellentesque tincidunt dignissim tincidunt. Nam fringilla nunc massa, vitae rhoncus quam sollicitudin in. Proin lacus odio, ultricies at sapien nec, venenatis condimentum dolor. Aenean eget sodales odio, eget vehicula massa.', 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 'Test PPL 2', '2021-12-31', '2021-12-25', '2021-12-30', 0, 0, 350000, '12-12-2021_03-20-44.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra in mauris ut ornare. Nam tempus mi ac eros ultrices rutrum. Vivamus congue, odio ac fermentum pulvinar, dolor ante dictum quam, vitae volutpat libero augue nec sem. Curabitur imperdiet pretium velit, vitae porttitor erat convallis nec. Pellentesque est quam, eleifend a efficitur sit amet, accumsan vulputate erat. Fusce et accumsan erat. Etiam tellus ipsum, luctus sit amet leo eu, porta rhoncus lectus. Donec volutpat, mi ac malesuada ultrices, felis nibh fermentum lectus, sed semper mi felis vel eros. Mauris dignissim ipsum id enim mollis mollis. Fusce interdum, tellus eget malesuada porta, eros magna aliquam nisi, sed accumsan massa purus eu quam. Sed rutrum condimentum nibh in lobortis. Nulla tristique tincidunt eros, id consectetur enim mattis at. Maecenas in tempus massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\r\n\r\nUt purus leo, sagittis sodales sem nec, hendrerit ornare dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Proin tellus augue, venenatis convallis fringilla at, imperdiet ac augue. Proin non porta arcu, a ultrices nulla. Pellentesque rhoncus mattis erat nec gravida. Sed tristique consectetur turpis eget tristique. Fusce leo velit, blandit ac sem venenatis, semper vulputate magna. Sed suscipit dui nibh, in commodo elit feugiat non. Maecenas vel quam et enim facilisis placerat in id nulla. Pellentesque tincidunt dignissim tincidunt. Nam fringilla nunc massa, vitae rhoncus quam sollicitudin in. Proin lacus odio, ultricies at sapien nec, venenatis condimentum dolor. Aenean eget sodales odio, eget vehicula massa.', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'test ppl kadaluarsa', '2021-12-04', '2021-12-01', '2021-12-03', 0, 0, 500000, '12-12-2021_03-40-11.jpg', 'lorem', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -258,19 +284,22 @@ CREATE TABLE `ppluser` (
   `role` varchar(255) NOT NULL,
   `tanggal_daftar` date NOT NULL,
   `status_pembayaran` varchar(255) NOT NULL,
-  `bukti_transfer` varchar(255) NOT NULL
+  `bukti_transfer` varchar(255) NOT NULL,
+  `kehadiran` varchar(255) NOT NULL,
+  `bukti_hadir` varchar(255) NOT NULL,
+  `point` int(11) NOT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ppluser`
 --
 
-INSERT INTO `ppluser` (`id`, `id_ppl`, `nama`, `harga_pendaftaran`, `id_pendaftar`, `role`, `tanggal_daftar`, `status_pembayaran`, `bukti_transfer`) VALUES
-(30, 16, 'Test PPL 2', 350000, '1', 'Anggota', '2021-12-13', 'Belum Upload', ''),
-(31, 15, 'Test PPL 1', 500000, '1', 'Anggota', '2021-12-13', 'Success', '13-12-2021_14-48-04.jpg'),
-(32, 15, 'Test PPL 1', 500000, 'U0001', 'Member', '2021-12-13', 'Success', '13-12-2021_14-47-35.jpg'),
-(33, 16, 'Test PPL 2', 350000, 'U0001', 'Member', '2021-12-13', 'Pending', '13-12-2021_14-47-48.jpg'),
-(34, 15, 'Test PPL 1', 500000, '123', 'Anggota', '2021-12-13', 'Belum Upload', '');
+INSERT INTO `ppluser` (`id`, `id_ppl`, `nama`, `harga_pendaftaran`, `id_pendaftar`, `role`, `tanggal_daftar`, `status_pembayaran`, `bukti_transfer`, `kehadiran`, `bukti_hadir`, `point`, `tanggal`) VALUES
+(47, 15, 'Test PPL 1', 500000, '1', 'Anggota', '2021-12-26', 'Lunas', '27-12-2021_09-46-02.jpg', 'Hadir', '27-12-2021_09-51-37.jpg', 3, '2021-12-29'),
+(48, 16, 'Test PPL 2', 350000, '1', 'Anggota', '2021-12-26', 'Lunas', '26-12-2021_14-27-02.jpg', 'Hadir', '', 2, '2021-12-31'),
+(49, 15, 'Test PPL 1', 500000, 'U0001', 'Member', '2021-12-26', 'Upload Bukti Pembayaran', '', 'Hadir', '', 3, '2021-12-29'),
+(50, 15, 'Test PPL 1', 500000, 'U0002', 'Member', '2021-12-26', 'Upload Bukti Pembayaran', '', 'Hadir', '', 3, '2021-12-29');
 
 --
 -- Indexes for dumped tables
@@ -305,6 +334,12 @@ ALTER TABLE `member`
 --
 ALTER TABLE `peraturan`
   ADD PRIMARY KEY (`id_peraturan`);
+
+--
+-- Indexes for table `point_terstruktur`
+--
+ALTER TABLE `point_terstruktur`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `postingan`
@@ -353,6 +388,12 @@ ALTER TABLE `peraturan`
   MODIFY `id_peraturan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `point_terstruktur`
+--
+ALTER TABLE `point_terstruktur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `postingan`
 --
 ALTER TABLE `postingan`
@@ -368,7 +409,7 @@ ALTER TABLE `ppl`
 -- AUTO_INCREMENT for table `ppluser`
 --
 ALTER TABLE `ppluser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Peserta <?= $ppl['nama']; ?></h1>
+                    <h1>Absensi Peserta <?= $ppl['nama']; ?></h1>
                     <h5><?= date('d F Y', strtotime($ppl["tanggal_ppl"])); ?></h5>
                 </div>
             </div>
@@ -39,31 +39,31 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a class="btn btn-primary mb-2" href="<?php echo site_url('anggota/daftarhadirppl/' . $ppl["id_ppl"]) ?>">Print Daftar Hadir</a>
-                            <a class="btn btn-info mb-2" href="<?php echo site_url('anggota/absensippl/' . $ppl["id_ppl"]) ?>">Absensi</a>
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Role</th>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th>Status</th>
-                                        <th>Kehadiran</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($pesertappl as $p) : ?>
+                            <form action="<?php echo site_url('anggota/checkabsensippl/' . $ppl["id_ppl"]) ?>" method="POST">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
                                         <tr>
-                                            <td><a style="color: black;" href="<?php echo site_url('anggota/pesertadetail/' . $p["id"]) ?>"><?= $p['id_pendaftar'] ?></a></td>
-                                            <td><a style="color: black;" href="<?php echo site_url('anggota/pesertadetail/' . $p["id"]) ?>"><?= $p['role'] ?></a></td>
-                                            <td><a style="color: black;" href="<?php echo site_url('anggota/pesertadetail/' . $p["id"]) ?>"><?= $p['nama'] ?></a></td>
-                                            <td><a style="color: black;" href="<?php echo site_url('anggota/pesertadetail/' . $p["id"]) ?>"><?= $p['email'] ?></a></td>
-                                            <td><a style="color: black;" href="<?php echo site_url('anggota/pesertadetail/' . $p["id"]) ?>"><?= $p['status_pembayaran'] ?></a></td>
-                                            <td><?= $p["kehadiran"]; ?></td>
+                                            <th>Id</th>
+                                            <th>Role</th>
+                                            <th>Nama</th>
+                                            <th>Kehadiran</th>
                                         </tr>
-                                    <?php endforeach ?>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($pesertappl as $p) : ?>
+                                            <tr>
+                                                <td><?= $p['id_pendaftar'] ?></td>
+                                                <td><?= $p['role'] ?></td>
+                                                <td><?= $p['nama'] ?></td>
+                                                <td>
+                                                    <input type="checkbox" id="flexCheckDefault" name="absensi[]" value="<?= $p['id']; ?>" <?= ($p["kehadiran"] == "Hadir") ? "checked" : "" ?> />
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+
+                                </table>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
                         </div>
                         <!-- /.card-body -->
                     </div>

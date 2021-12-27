@@ -50,6 +50,10 @@
                                     <p class="float-right my-0"><?= $pesertappldetail["emailpeserta"] ?></p>
                                 </li>
                                 <li class="list-group-item py-3">
+                                    <b>No Telp: </b>
+                                    <p class="float-right my-0"><?= $pesertappldetail["notelppeserta"] ?></p>
+                                </li>
+                                <li class="list-group-item py-3">
                                     <b>Alamat: </b>
                                     <p class="float-right my-0"><?= $pesertappldetail["alamatpeserta"] ?></p>
                                 </li>
@@ -69,9 +73,9 @@
                                             </div>
                                             <div class="col-6">
                                                 <select name="status_pembayaran" class="form-control">
-                                                    <option <?php echo ($pesertappldetail["status_pembayaran"] == 'Belum Upload') ? 'selected' : ''; ?>>Belum Upload</option>
+                                                    <option <?php echo ($pesertappldetail["status_pembayaran"] == 'Upload Bukti Transfer') ? 'selected' : ''; ?>>Upload Bukti Transfer</option>
                                                     <option <?php echo ($pesertappldetail["status_pembayaran"] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
-                                                    <option <?php echo ($pesertappldetail["status_pembayaran"] == 'Success') ? 'selected' : ''; ?>>Success</option>
+                                                    <option <?php echo ($pesertappldetail["status_pembayaran"] == 'Lunas') ? 'selected' : ''; ?>>Lunas</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -97,8 +101,14 @@
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item py-3">
                                     <b>Bukti Transfer: </b>
-                                    <img src="<?= base_url('bukti_transfer/') . $pesertappldetail['bukti_transfer']; ?>" class="img-thumbnail mt-3">
+                                    <img src="<?= base_url('bukti_transfer_ppl/') . $pesertappldetail['bukti_transfer']; ?>" class="img-thumbnail mt-3">
                                 </li>
+                                <?php if ($pesertappldetail['bukti_transfer']) { ?>
+                                    <li class="list-group-item py-3">
+                                        <b>Bukti Kehadiran: </b>
+                                        <img src="<?= base_url('bukti_hadir/') . $pesertappldetail['bukti_hadir']; ?>" class="img-thumbnail mt-3">
+                                    </li>
+                                <?php } ?>
 
                             </ul>
                         </div>
